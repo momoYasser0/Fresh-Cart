@@ -1,0 +1,46 @@
+<section class="w-75 bg-main-light my-3 p-4 shadow rounded-2 mx-auto " *ngIf="orderData.length;else noOrders">
+  <h1 class="text-center">All Orders</h1>
+  <div class="row g-2 border-bottom py-3" *ngFor="let data of orderData.reverse(); index as i">
+    <h2 class="small">Order number: {{i + 1}}</h2>
+    <div class="col-md-8">
+      <div class="d-flex align-items-center gap-3 product-item" *ngFor="let cartItem of data.cartItems">
+        <div class="product-image mb-3">
+          <img [src]="cartItem.product.imageCover" [alt]="cartItem.product.title" width="100"
+            [title]="cartItem.product.title">
+        </div>
+        <div class="product-info">
+          <h3 class="h6 small text-main">{{cartItem.product.title}}</h3>
+          <span class="text-muted d-block"> Count:{{ cartItem.count }} </span>
+          <span class="text-muted d-block"> Price:{{ cartItem.price }} </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-1">
+        <p class="mb-0">
+          <span> Is Delivered: </span>
+          <span [class]="data.isDelivered ? 'bg-success' : 'bg-danger'" class="badge">{{ data.isDelivered ? "Yes" : "No"
+            }}</span>
+        </p>
+
+        <p class="mb-0">
+          <span> Is Paid: </span>
+          <span class="badge" [class]="data.isPaid ? 'bg-success' : 'bg-danger'">{{ data.isPaid ? "Yes" : "No" }}</span>
+        </p>
+        <span class="d-block">
+          Payment Method Type: {{ data.paymentMethodType }}
+        </span>
+        <span class="d-block">
+          Total Order Price: {{ data.totalOrderPrice }}
+        </span>
+        <span>Paid At : {{data.paidAt?.slice(0,10)?.split('-')?.join('/')}}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #noOrders>
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <h2 class='text-center fw-bold'>No Orders to Show</h2>
+  </div>
+</ng-template>

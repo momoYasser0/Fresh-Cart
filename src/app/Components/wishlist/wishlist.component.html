@@ -1,0 +1,33 @@
+<section class="my-4" *ngIf="wishList.length;else noList">
+  <div class="row g-3 justify-content-center">
+    <div class=" col-sm-6  col-md-4 col-lg-3 col-xl-2" *ngFor="let product of wishList">
+      <div class="product" *ngIf="!wishList.includes($any(product._id))">
+        <header [routerLink]="['/details',product._id]" class=" p-2" role="button">
+          <img [src]="product.imageCover" class="mb-2 w-100" [alt]="product.title" [title]="product.title">
+          <h3 class="h6">{{product.title | cuttext:0:2}}</h3>
+          <h4 class="small text-main">{{product.category.name}}</h4>
+          <div class="d-flex justify-content-between">
+            <span>{{product.price | currency : 'EGP '}} </span>
+            <div><i class="fas fa-star  fa-sm" *ngFor="let star of [1,2,3,4,5]"
+                [class.rating-color]="product.ratingsAverage >= star"></i><span
+                class="text-muted">{{product.ratingsAverage}}</span>
+            </div>
+          </div>
+        </header>
+        <i class="fas fa-heart fa-2x text-main heart" role="button" (click)="removeFav(product._id)"
+          title="Remove From favourite"></i>
+        <footer>
+          <button class="main-btn w-75 mx-auto d-block mb-1" (click)="addToCart(product._id,btnAdd)" #btnAdd>Add to Cart
+            +</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<ng-template #noList>
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <h2 class='text-center fw-bold'>Your Wish List is Empty</h2>
+  </div>
+</ng-template>

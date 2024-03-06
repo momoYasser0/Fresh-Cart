@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg bg-light shadow-sm fixed-top " [class.py-3]="isScroll">
+  <div class="container-fluid" [class.px-5]="isScroll">
+    <a class="navbar-brand " routerLink="/home">
+      <img src="assets/imgs/freshcart-logo.svg" alt="freshcart-logo"></a>
+    <button class="navbar-toggler collapse-o" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="btn">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link px-2" routerLink="/home" routerLinkActive="active-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" routerLink="/products" routerLinkActive="active-link">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-2" routerLink="/brands" routerLinkActive="active-link">Brands</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link px-2" routerLink="/categories" routerLinkActive="active-link">Categories</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link px-2" routerLink="/allorders" routerLinkActive="active-link">Orders</a>
+        </li>
+
+
+      </ul>
+      <ul class="navbar-nav ms-auto icons mt-lg-0 mt-2">
+        <li class="nav-item">
+          <ul class="navbar-nav d-flex align-items-center gap-2 ">
+            <li class="nav-item">
+              <a class="nav-link position-relative" routerLink="/cart">
+                <i class="fas fa-cart-shopping fa-xl text-main"></i>
+                <span class=" cartItems position-absolute top-0 end-0 badge bg-info"
+                  *ngIf="cartNumb">{{cartNumb}}</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link position-relative" routerLink="/wishlist">
+                <i class="fas fa-heart fa-xl text-main"></i>
+                <span class="position-absolute top-0 end-0 badge bg-info" *ngIf="wishNum">{{wishNum}}</span>
+              </a>
+            </li>
+            <li class="nav-item"><button type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                class="dropdown-toggle"><i class="fas fa-user text-success"></i>
+                <ul class="dropdown-menu  mt-2" data-bs-popper="static">
+                  <li><a routerLinkActive="active-link" routerLink="/forgetpassword" class="dropdown-item small">Forgot
+                      Password</a>
+                  </li>
+                  <li><a routerLinkactive="active-link" routerLink="/updatepassword" class="dropdown-item small">Update
+                      password</a>
+                  </li>
+                  <li><a routerLinkactive="active-link" routerLink="/profile" class="dropdown-item small">Profile</a>
+                  </li>
+                  <li><a routerLinkactive="active-link" routerLink="/allorders" class="dropdown-item small">My
+                      Orders</a>
+                  </li>
+                </ul>
+              </button></li>
+            <ul class="navbar-nav  d-flex gap-2 social">
+              <li class="nav-item d-flex  gap-3 align-items-center mx-3">
+                <a href="https://api.whatsapp.com/send/?phone=%2B0201033998108&text&type=phone_number&app_absent=0"
+                  target="_blank"><i class="fab fa-whatsapp fa-xl text-main"></i></a>
+                <i class="fab fa-facebook fa-xl "></i>
+              </li>
+            </ul>
+
+
+          </ul>
+        </li>
+
+
+        <li class="nav-item">
+          <span class="nav-link " role="button" (click)="signout()">Logout</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

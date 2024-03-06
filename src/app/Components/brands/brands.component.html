@@ -1,0 +1,20 @@
+<section class="my-3" *ngIf="brandsData">
+  <div class="row g-3 mb-3">
+    <div class="col-lg-3 col-md-4 col-sm-6 " *ngFor="let brand of brandsData| paginate: { id: 'Brands',
+                                                      itemsPerPage: pageLimit,
+                                                      currentPage: currentPage,
+                                                      totalItems: totalBrands }">
+      <div class="card" [routerLink]="['/brands',brand._id]" role="button">
+        <img [src]="brand.image" [alt]="brand.name" [title]="brand.name" class="w-100">
+        <h3 class="text-main text-center">{{brand.name}}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="text-center position-sticky">
+    <pagination-controls id="Brands" (pageChange)="pageChanged($event)" (pageBoundsCorrection)="pageChanged($event)"
+      [maxSize]="9" [directionLinks]="true" [autoHide]="true" [responsive]="true" previousLabel="Previous"
+      nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
+  </div>
+</section>

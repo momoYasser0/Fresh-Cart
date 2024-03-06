@@ -1,0 +1,15 @@
+<section class="bg-main-light p-4 mx-auto w-75 my-3 rounded-2" *ngIf="categoryDetails._id">
+  <div class="row align-items-center">
+    <div class="col-md-4">
+      <img [src]="categoryDetails.image" [alt]="categoryDetails.name" [title]="categoryDetails.name"
+        class="w-100 rounded">
+    </div>
+    <div class="col-md">
+      <h2>{{categoryDetails.name}}</h2>
+      <div class="subcategory" *ngIf="Subcategory.length">
+        <h3 class="h4">Sub Categories: </h3>
+        <span *ngFor="let i of Subcategory" class="badge bg-info me-1">{{i.name}}</span>
+      </div>
+    </div>
+  </div>
+</section>

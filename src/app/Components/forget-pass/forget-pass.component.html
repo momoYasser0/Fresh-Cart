@@ -1,0 +1,49 @@
+<section class="mx-auto w-50 bg-main-light shadow p-3 rounded-2 my-5" *ngIf="step1">
+  <form [formGroup]="forgetForm" (ngSubmit)="forgetPassword()">
+    <label for="email">Email :</label>
+    <input type="email" class="form-control" id="email" formControlName="email">
+    <div class="a-alert" *ngIf="forgetForm.get('email')?.touched">
+      <p *ngIf="forgetForm.get('email')?.getError('required')" class="text-danger mb-0">
+        <i class="fa-regular fa-circle-xmark me-1"></i>Email
+        is required
+      </p>
+      <p *ngIf="forgetForm.get('email')?.getError('email')" class="text-danger mb-0"><i
+          class="fa-regular fa-circle-xmark me-1"></i>Please
+        enter valid email</p>
+    </div>
+    <button class="main-btn w-100 mt-3">Submit Email</button>
+
+  </form>
+</section>
+<section class="mx-auto w-50 bg-main-light shadow p-3 rounded-2 my-5" *ngIf="step2">
+  <form [formGroup]="resetForm" (ngSubmit)="resetCode()">
+    <label for="resetcode">Reset Code :</label>
+    <input type="text" class="form-control" id="resetcode" formControlName="resetCode">
+    <div class="a-alert" *ngIf="resetForm.get('resetCode')?.touched">
+      <p *ngIf="resetForm.get('resetCode')?.getError('required')" class="text-danger mb-0">
+        <i class="fa-regular fa-circle-xmark me-1"></i>Input is required
+      </p>
+      <p *ngIf="resetForm.get('resetCode')?.getError('pattern')" class="text-danger mb-0">
+        <i class="fa-regular fa-circle-xmark me-1"></i>Incorrect Pattern
+      </p>
+    </div>
+    <button class="main-btn w-100 mt-3">Submit Reset Code</button>
+  </form>
+</section>
+<section class="mx-auto w-50 bg-main-light shadow p-3 rounded-2 my-5" *ngIf="step3">
+  <form [formGroup]="newPassForm" (ngSubmit)="resetPassword()">
+    <label for="resetpw">New Password :</label>
+    <input type="password" class="form-control" id="resetpw" formControlName="newPassword">
+    <div class="a-alert" *ngIf="newPassForm.get('password')?.touched">
+      <p *ngIf="newPassForm.get('password')?.getError('required')" class="text-danger mb-0">
+        <i class="fa-regular fa-circle-xmark me-1"></i>Password
+        is required
+      </p>
+      <p *ngIf="newPassForm.get('password')?.getError('pattern')" class="text-danger mb-0"><i
+          class="fa-regular fa-circle-xmark me-1"></i>Password must be at least Minimum eight characters<br>• at
+        least
+        One uppercase letter. <br>• One lowercase letter. <br>• One number and one special character.</p>
+    </div>
+    <button class="main-btn w-100 mt-3">Submit New Password</button>
+  </form>
+</section>

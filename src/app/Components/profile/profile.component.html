@@ -1,0 +1,20 @@
+<section class="my-5">
+  <h2 class="text-center">Hello Mr: {{userName}}</h2>
+  <form class="bg-main-light mt-5 shadow p-3 rounded-2" [formGroup]="addressForm" (ngSubmit)="handleForm()">
+    <div class="row g-2">
+      <div class="col-lg-3  col-sm-6">
+        <input type="text" placeholder="Name" class="form-control" formGroupName="name">
+      </div>
+      <div class="col-lg-3  col-sm-6">
+        <input type="text" placeholder="Details" class="form-control" formGroupName="details">
+      </div>
+      <div class="col-lg-3  col-sm-6">
+        <input type="tel" placeholder="Phone" class="form-control" formGroupName="phone">
+      </div>
+      <div class="col-lg-3  col-sm-6">
+        <input type="text" placeholder="City" class="form-control" formGroupName="city">
+      </div>
+      <button class="main-btn mt-3 w-25 mx-auto">Submit</button>
+    </div>
+  </form>
+</section>

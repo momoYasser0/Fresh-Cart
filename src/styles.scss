@@ -1,0 +1,201 @@
+/* ==========>OWL Carosel Styles<============ */
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+/* ==========>Fonts<============ */
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+
+/* =========>Global Variables<========= */
+$main-color: #0aad0a;
+$light-color: #f0f3f2;
+$shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px, rgba(145, 158, 171, 0.14) 0px 4px 5px 0px, rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+$main-font: 'Encode Sans Expanded', sans-serif;
+$rating-color: #ffc908;
+$main-transition: 0.8s;
+
+/* =========>Global Style<========= */
+body {
+  font-family: $main-font;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $light-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $main-color;
+  border-radius: 8px;
+}
+
+/* @media screen and (max-width:767px) {
+  html {
+    font-size: 12px;
+  }
+}
+ */
+.text-main {
+  color: $main-color;
+}
+
+.text-main-light {
+  color: $main-color;
+}
+
+.bg-main {
+  background-color: $main-color;
+}
+
+.bg-main-light {
+  background-color: $light-color;
+}
+
+.rating-color {
+  color: $rating-color !important;
+}
+
+.font-sm {
+  font-size: 11px;
+}
+
+.main-btn {
+  background-color: $main-color;
+  border-radius: 5px;
+  color: #fff;
+  border: unset;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: background-color $main-transition;
+
+  &:disabled {
+    background-color: #067a0663 !important;
+    color: #ffffff8e !important;
+    cursor: not-allowed;
+  }
+
+  &:disabled:hover {
+    background-color: #067a0663 !important;
+  }
+
+  &:hover {
+    background-color: #08e208 !important;
+  }
+}
+
+.active-link {
+  background-color: $main-color !important;
+  color: $light-color !important;
+  border-radius: 5px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.btn-up {
+  position: fixed;
+  z-index: 9999;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: $main-color;
+  border: unset;
+  color: #fff;
+  transition: opacity 1s;
+}
+
+/* =========>Nav Style<========= */
+nav {
+  transition: padding $main-transition;
+
+  &>div {
+    transition: padding $main-transition;
+  }
+}
+
+/* =========>Home Style<========= */
+.product {
+
+  border-radius: 5px;
+  padding: 4px;
+
+  transition: box-shadow $main-transition;
+  overflow: hidden;
+  position: relative;
+
+  & .main-btn {
+    transform: translateY(150%);
+    transition: all 1s;
+    opacity: 0;
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px #11bd1168;
+    border: 1px solid $main-color;
+    box-shadow: $shadow;
+
+    .main-btn,
+    .heart {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  & .heart {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s;
+    z-index: 99;
+
+
+  }
+}
+
+/* Forms styles */
+.pass-eye {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 999;
+  cursor: pointer;
+}
+
+.form-control {
+  padding: 0.5rem 1rem;
+}
+
+.form-control:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: $main-color;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #0aad0a64;
+}
+
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-title {
+  line-height: 1.2;
+  text-align: center;
+  padding-block: 35px;
+  background-color: $main-color;
+  color: $light-color;
+  width: 100%;
+  display: block;
+}

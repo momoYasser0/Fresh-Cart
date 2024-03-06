@@ -1,0 +1,116 @@
+<section class="register my-4 mx-auto shadow bg-light rounded-3 w-50 overflow-hidden">
+
+  <h1 class="form-title display-6">Register Now</h1>
+  <form [formGroup]="registerForm" class=" p-sm-5 p-3 border-bottom" (ngSubmit)="handleForm()">
+    <div class="form-row mb-3">
+      <div class="input-group">
+        <span class="input-group-text" id="addon-name"><i class="fa-regular fa-user"></i></span>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Your Name ..."
+          aria-describedby="addon-name">
+      </div>
+      <div class="a-alert" *ngIf="registerForm.get('name')?.touched">
+        <p *ngIf="registerForm.get('name')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>Name
+          is required
+        </p>
+        <p *ngIf="registerForm.get('name')?.getError('pattern')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>
+          Please enter valid name and at least 3 characters</p>
+
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="input-group">
+        <span class="input-group-text" id="addon-email"><i class="fa-regular fa-envelope"></i></span>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Your Email ..."
+          aria-describedby="addon-email">
+      </div>
+      <div class="a-alert" *ngIf="registerForm.get('email')?.touched">
+        <p *ngIf="registerForm.get('email')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>Email
+          is required
+        </p>
+        <p *ngIf="registerForm.get('email')?.getError('email')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>Please
+          enter valid email</p>
+      </div>
+    </div>
+
+    <div class="form-row mb-3">
+      <div class="input-group">
+        <span class="input-group-text" id="addon-pass"><i class="fa-solid fa-lock "></i></span>
+        <input type="password" class="form-control" id="password" formControlName="password"
+          placeholder="Your Password ..." aria-describedby="addon-pass" #password>
+        <span (click)="showPass = true; showPass == true? (password.type = 'text'):(password.type = 'password')"
+          [ngClass]="{'d-none':showPass}">
+          <i class="fa-regular fa-eye pass-eye"></i>
+        </span>
+        <span (click)="showPass = false;showPass == false ? (password.type = 'password'):(password.type = 'text')"
+          [ngClass]="{'d-none':!showPass}"><i class="fa-regular fa-eye-slash pass-eye"></i></span>
+      </div>
+      <div class="a-alert" *ngIf="registerForm.get('password')?.touched">
+        <p *ngIf="registerForm.get('password')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>Password
+          is required
+        </p>
+        <p *ngIf="registerForm.get('password')?.getError('pattern')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>Password must be at least Minimum eight characters<br>• at
+          least
+          One uppercase letter. <br>• One lowercase letter. <br>• One number and one special character.</p>
+
+      </div>
+    </div>
+    <div class="form-row mb-3">
+      <div class="input-group">
+        <span id="addon-repass" class="input-group-text"><i class="fa-solid fa-lock "></i></span>
+        <input type="password" class="form-control" id="repassword" formControlName="rePassword"
+          placeholder="Confirm Password ..." aria-describedby="addon-repass" #repassword>
+        <span (click)="showRepass = true; showRepass == true? (repassword.type = 'text'):(repassword.type = 'password')"
+          [ngClass]="{'d-none':showRepass}">
+          <i class="fa-regular fa-eye pass-eye"></i>
+        </span>
+        <span
+          (click)="showRepass = false;showRepass == false ? (repassword.type = 'password'):(repassword.type = 'text')"
+          [ngClass]="{'d-none':!showRepass}"><i class="fa-regular fa-eye-slash pass-eye"></i></span>
+      </div>
+      <div class="a-alert" *ngIf="registerForm.get('rePassword')?.touched">
+        <p *ngIf="registerForm.get('rePassword')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>Repassword
+          is required
+        </p>
+        <p *ngIf="registerForm.get('rePassword')?.getError('misMatach')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>Password
+          is not matched</p>
+      </div>
+
+
+
+
+
+    </div>
+    <div class="form-row mb-3">
+      <div class="input-group">
+        <span class="input-group-text" id="addon-phone"><i class="fa-solid fa-phone"></i></span>
+        <input type="tel" class="form-control" id="phone" formControlName="phone" placeholder="Your Phone ..."
+          aria-describedby="addon-phone">
+      </div>
+      <div class="a-alert" *ngIf="registerForm.get('phone')?.touched">
+        <p *ngIf="registerForm.get('phone')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>Phone
+          is required
+        </p>
+        <p *ngIf="registerForm.get('phone')?.getError('pattern')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>
+          Please enter egyptian number</p>
+      </div>
+
+    </div>
+    <p class="a-alert" *ngIf="accountExists.length"><i class="fa-solid fa-info fa-bounce me-1"></i>{{accountExists}}</p>
+    <button type="submit" class="main-btn w-100 d-block mt-3" [disabled]="registerForm.invalid">Sign Up
+      <i class="fa-solid fa-spinner fa-spin" *ngIf="isLoading"></i></button>
+  </form>
+  <div class="text-center my-5">
+    <span class="d-block">Have an account ?</span>
+    <button class="btn text-main text-uppercase fw-bolder" routerLink="/login">Login Now</button>
+  </div>
+</section>

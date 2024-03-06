@@ -1,0 +1,44 @@
+<section class="w-75 bg-main-light my-3 p-4 shadow rounded-2 mx-auto">
+  <form [formGroup]="orderForm" (ngSubmit)="handleForm(orderForm)">
+
+    <h2 class="text-center text-capitalize">shipping Address</h2>
+    <div class="form-item">
+      <label for="city">City : </label>
+      <input type="text" placeholder="City... " class="form-control mb-2" formControlName="city" id="city">
+      <div class="a-alert" *ngIf="orderForm.get('city')?.touched">
+        <p *ngIf="orderForm.get('city')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>City is required
+        </p>
+        <p *ngIf="orderForm.get('city')?.getError('minlength')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>
+          Minimum length 3 characters</p>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="phone">Phone : </label>
+      <input type="tel" placeholder="Phone... " class="form-control mb-2" formControlName="phone" id="phone">
+      <div class="a-alert" *ngIf="orderForm.get('phone')?.touched">
+        <p *ngIf="orderForm.get('phone')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>Phone is required
+        </p>
+        <p *ngIf="orderForm.get('phone')?.getError('pattern')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>
+          Please enter egyptian number</p>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="details">Address : </label>
+      <textarea placeholder="Address... " class="form-control mb-2 " formControlName="details" id="details">
+            </textarea>
+      <div class="a-alert" *ngIf="orderForm.get('details')?.touched">
+        <p *ngIf="orderForm.get('details')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>Details is required
+        </p>
+        <p *ngIf="orderForm.get('details')?.getError('minlength')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>
+          Minimum length 3 characters</p>
+      </div>
+    </div>
+    <button class="w-100 main-btn my-2" [disabled]="orderForm.invalid">Next</button>
+  </form>
+</section>

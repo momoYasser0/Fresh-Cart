@@ -1,0 +1,55 @@
+<section class="register my-5 mx-auto shadow bg-main-light rounded-3 overflow-hidden  w-50">
+
+  <h1 class="form-title mb-3 ">Update User Password</h1>
+  <form [formGroup]="updatePassForm" class="w-75 mx-auto p-3" (ngSubmit)="handleForm()">
+
+    <div class="form-item mb-2">
+      <label for="currentpw">Current Password: </label>
+      <input type="password" class="form-control" id="currentpw" formControlName="currentPassword"
+        placeholder="Your Password ...">
+      <div class="a-alert" *ngIf="updatePassForm.get('currentPassword')?.touched">
+        <p *ngIf="updatePassForm.get('currentPassword')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>Password
+          is required
+        </p>
+        <p *ngIf="updatePassForm.get('currentPassword')?.getError('pattern')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>Password pattern is not correct</p>
+
+      </div>
+    </div>
+    <div class="form-item mb-2">
+      <label for="newpassword">New Password: </label>
+      <input type="password" class="form-control" id="newpassword" formControlName="password"
+        placeholder="Enter New Password ...">
+      <div class="a-alert" *ngIf="updatePassForm.get('password')?.touched">
+        <p *ngIf="updatePassForm.get('password')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>password
+          is required
+        </p>
+        <p *ngIf="updatePassForm.get('password')?.getError('pattern')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>Password must be at least Minimum eight characters<br>• at
+          least
+          One uppercase letter. <br>• One lowercase letter. <br>• One number and one special character.</p>
+      </div>
+    </div>
+    <div class="form-item mb-2">
+      <label for="repassword">Repassword: </label>
+      <input type="password" class="form-control" id="repassword" formControlName="rePassword"
+        placeholder="Confirm Password ...">
+      <div class="a-alert" *ngIf="updatePassForm.get('rePassword')?.touched">
+        <p *ngIf="updatePassForm.get('rePassword')?.getError('required')" class="text-danger mb-0">
+          <i class="fa-regular fa-circle-xmark me-1"></i>repassword
+          is required
+        </p>
+        <p *ngIf="updatePassForm.get('rePassword')?.getError('misMatach')" class="text-danger mb-0"><i
+            class="fa-regular fa-circle-xmark me-1"></i>Password
+          is not matched</p>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between"><button type="submit" class="main-btn ms-auto d-block "
+        [disabled]="updatePassForm.invalid">Change Password
+        <i class="fa-solid fa-spinner fa-spin" *ngIf="isLoading"></i></button></div>
+  </form>
+
+</section>
