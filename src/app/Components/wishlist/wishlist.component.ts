@@ -57,7 +57,7 @@ export class WishlistComponent implements OnInit {
     this._WishlistService.removeItem(id).subscribe({
       next: (Response) => {
         if (Response.status == 'success') {
-          this._ToastrService.success(Response.message);
+          this._ToastrService.success("Product removed successfully from your wish List");
           this._WishlistService.FavNumber.next(Response.data.length);
           this.wishListID = Response.data
           const NewID = this.wishList.filter((item: any) => this.wishListID.includes(item._id))
