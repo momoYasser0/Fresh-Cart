@@ -98,7 +98,7 @@ export class ProductsComponent implements OnInit {
     this._WishlistService.removeItem(id).subscribe({
       next: (Response) => {
         if (Response.status == 'success') {
-          this._ToastrService.info(Response.message);
+          this._ToastrService.success("Item removed successfully from your favourite")
           this._WishlistService.FavNumber.next(Response.data.length)
           this.wishListData = Response.data
         }
