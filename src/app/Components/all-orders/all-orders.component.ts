@@ -23,8 +23,6 @@ export class AllOrdersComponent implements OnInit {
           this._OrdersService.getUserOrders(this.userID).subscribe({
             next: (Response) => {
               this.orderData = Response
-              console.log(Response);
-
               window.scrollTo(0, 0)
             }
           })
