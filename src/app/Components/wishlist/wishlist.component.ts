@@ -1,11 +1,11 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WishlistService } from 'src/app/Core/Services/wishlist.service';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { wishlist } from 'src/app/Core/Interfaces/wishlist';
-import { RouterLink } from '@angular/router';
-import { CuttextPipe } from 'src/app/Core/pipes/cuttext.pipe';
 import { CartService } from 'src/app/Core/Services/cart.service';
+import { WishlistService } from 'src/app/Core/Services/wishlist.service';
+import { CuttextPipe } from 'src/app/Core/pipes/cuttext.pipe';
 
 @Component({
   selector: 'app-wishlist',

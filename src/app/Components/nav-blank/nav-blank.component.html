@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto nav-links">
         <li class="nav-item">
           <a class="nav-link px-2" routerLink="/home" routerLinkActive="active-link">Home</a>
         </li>
@@ -27,7 +27,7 @@
 
       </ul>
       <ul class="navbar-nav ms-auto icons mt-lg-0 mt-2">
-        <li class="nav-item">
+        <li class="nav-items">
           <ul class="navbar-nav d-flex align-items-center gap-2 ">
             <li class="nav-item">
               <a class="nav-link position-relative" routerLink="/cart">
@@ -42,22 +42,28 @@
                 <span class="position-absolute top-0 end-0 badge bg-info" *ngIf="wishNum">{{wishNum}}</span>
               </a>
             </li>
-            <li class="nav-item"><button type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                class="dropdown-toggle"><i class="fas fa-user text-success"></i>
+            <li class="nav-items">
+              <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-user text-success"></i>
                 <ul class="dropdown-menu  mt-2" data-bs-popper="static">
-                  <li><a routerLinkActive="active-link" routerLink="/forgetpassword" class="dropdown-item small">Forgot
+                  <li class="nav-item"><a routerLinkActive="active-link" routerLink="/forgetpassword"
+                      class="dropdown-item small">Forgot
                       Password</a>
                   </li>
-                  <li><a routerLinkactive="active-link" routerLink="/updatepassword" class="dropdown-item small">Update
+                  <li class="nav-item"><a routerLinkactive="active-link" routerLink="/updatepassword"
+                      class="dropdown-item small">Update
                       password</a>
                   </li>
-                  <li><a routerLinkactive="active-link" routerLink="/profile" class="dropdown-item small">Profile</a>
+                  <li class="nav-item"><a routerLinkactive="active-link" routerLink="/profile"
+                      class="dropdown-item small">Profile</a>
                   </li>
-                  <li><a routerLinkactive="active-link" routerLink="/allorders" class="dropdown-item small">My
+                  <li class="nav-item"><a routerLinkactive="active-link" routerLink="/allorders"
+                      class="dropdown-item small">My
                       Orders</a>
                   </li>
                 </ul>
-              </button></li>
+              </button>
+            </li>
             <ul class="navbar-nav  d-flex gap-2 social">
               <li class="nav-item d-flex  gap-3 align-items-center mx-3">
                 <a href="https://api.whatsapp.com/send/?phone=%2B0201033998108&text&type=phone_number&app_absent=0"
